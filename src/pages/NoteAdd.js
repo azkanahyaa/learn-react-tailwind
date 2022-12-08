@@ -11,12 +11,14 @@ function NoteAdd() {
         navigate('/')
     }
     return (
-        <div className="container max-w-xl mx-auto text-center">
-            <Link href="." className="text-purple-400 text underline mb-2 inline-block"><HiChevronDoubleLeft /> Kembali ke list catatan</Link>
-            <h2>Tambah Catatan Baru</h2>
-        
-            <NoteForm addNote={onAddNoteHandler}/>
-        </div>
+        <>
+            <div className="container max-w-xl mx-auto text-center">
+                <Link to="/" className="text-purple-400 text underline mb-2 inline-block"><HiChevronDoubleLeft /> Kembali ke list catatan</Link>
+                <h2>Tambah Catatan Baru</h2>
+
+                <NoteForm addNote={onAddNoteHandler}/>
+            </div>
+        </>
     )
 }
 
