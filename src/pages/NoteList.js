@@ -16,7 +16,7 @@ function NoteList() {
           </div>
         </div>
         <div className="container mx-auto grid sm:grid-cols-3 lg:grid-cols-4 grid-cols-2 gap-4">
-          <Link to="/add" className="flex flex-col bg-accent-base justify-center text-center text-2xl rounded-lg py-4 px-3 h-48">
+          <Link to="/add" className="flex flex-col bg-accent-base justify-center text-center text-2xl rounded-lg py-4 px-3 h-44">
             <HiPlus className="mx-auto w-12 h-12"></HiPlus>
             <span className="text-sm">Tambah Catatan Baru</span>
           </Link>
