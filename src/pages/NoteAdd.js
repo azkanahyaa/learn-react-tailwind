@@ -1,5 +1,5 @@
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NoteForm from "../components/NoteForm";
 import { addNote } from "../utils/local-data";
 
@@ -12,9 +12,9 @@ function NoteAdd() {
     }
     return (
         <div className="container max-w-xl mx-auto text-center">
-            <a href="." className="text-purple-400 text underline mb-2 inline-block"><HiChevronDoubleLeft /> Kembali ke list catatan</a>
+            <Link href="." className="text-purple-400 text underline mb-2 inline-block"><HiChevronDoubleLeft /> Kembali ke list catatan</Link>
             <h2>Tambah Catatan Baru</h2>
-
+        
             <NoteForm addNote={onAddNoteHandler}/>
         </div>
     )
