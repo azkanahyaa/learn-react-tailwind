@@ -1,3 +1,6 @@
+import PropTypes from 'prop-types'
+import parser from 'html-react-parser'
+
 function NoteCard({ createdAt, title, body }) {
     createdAt = new Date(createdAt)
     return (
@@ -5,11 +8,17 @@ function NoteCard({ createdAt, title, body }) {
             <p className="text-sm text-slate-300">{createdAt.toLocaleString()}</p>
             <div>
               <h5 className="mb-2 vertical-hide before:hidden before:absolute before:none before:content-[attr(content)] before:hover:block before:text-xs before:bg-base-1/90 before:p-1 before:rounded before:-translate-y-full" content={title}>{title}</h5>
-              <span className="text-sm text-slate-400 leading-6 vertical-hide" content={body}>{body}</span>
+              <span className="text-sm text-slate-400 leading-6 vertical-hide">{parser(body)}</span>
               
             </div>
         </div>
     )
+}
+
+NoteCard.propType = {
+    createdAt: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string
 }
 
 export default NoteCard
