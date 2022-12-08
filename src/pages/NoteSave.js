@@ -1,14 +1,21 @@
 import { HiChevronDoubleLeft } from "react-icons/hi";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import NoteForm from "../components/NoteForm";
-import { addNote } from "../utils/local-data";
+import { addNote, editNote, getNote } from "../utils/local-data";
 
-function NoteAdd() {
+function NoteSave() {
     const navigate = useNavigate()
-
-    function onAddNoteHandler(note) {
+    const {id} = useParams()
+    const note = getNote(id)
+    console.log(note)
+  
+    const onSaveNoteHandler = (!id) ? (note) => {
         addNote(note)
         navigate('/')
+    } : (note) => {
+        console.log({id, ...note})
+        editNote({id, ...note})
+        navigate('/detail/'+id)
     }
     return (
         <>
@@ -16,11 +23,11 @@ function NoteAdd() {
                 <Link to="/" className="text-purple-400 text underline mb-2 inline-block"><HiChevronDoubleLeft /> Kembali ke list catatan</Link>
                 <h2>Tambah Catatan Baru</h2>
 
-                <NoteForm addNote={onAddNoteHandler}/>
+                <NoteForm saveNote={onSaveNoteHandler} {...note}/>
             </div>
         </>
     )
 }
 
 
-export default NoteAdd;
+export default NoteSave;
