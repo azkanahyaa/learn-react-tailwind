@@ -5,6 +5,7 @@ import { getAllNotes } from '../utils/local-data'
 
 function NoteList() {
   let notes = getAllNotes().filter(note => !note.archived)
+  console.log(notes)
     return (
       <>
 
@@ -19,7 +20,9 @@ function NoteList() {
             <HiPlus className="mx-auto w-12 h-12"></HiPlus>
             <span className="text-sm">Tambah Catatan Baru</span>
           </a>
-          {notes.map((note) => <NoteCard {...note} />)}
+          {notes.map((note) => <NoteCard 
+          key={note.id}
+          {...note} />)}
 
         </div>
       </>

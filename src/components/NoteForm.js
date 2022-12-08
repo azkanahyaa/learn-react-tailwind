@@ -10,6 +10,10 @@ class NoteForm extends Component {
             title: this.props.title || '',
             body: this.props.body || ''
         }
+
+        this.onTitleChange = this.onTitleChange.bind(this)
+        this.onBodyChange = this.onBodyChange.bind(this)
+        this.onSubmit = this.onSubmit.bind(this)
     }
 
     onTitleChange(event) {
@@ -19,8 +23,15 @@ class NoteForm extends Component {
     }
 
     onBodyChange(event) {
+        if (event.target.innerHTML !== '') {
+            event.target.setAttribute('data-placeholder', '') 
+        } else {
+            event.target.setAttribute('data-placeholder', "Masukkan isi catatan di sini")
+        }
+
+        event.target.setAttribute('value', event.target.innerHTML)
         this.setState({
-            title: event.target.innerHTML
+            body: event.target.getAttribute('value')
         })
     }
 
@@ -34,7 +45,7 @@ class NoteForm extends Component {
             <>
                 <div className="bg-base-2  text-left mx-auto rounded-lg py-8 mt-4 px-5">
                     <input className="block bg-transparent text-3xl mb-4 w-full" onChange={this.onTitleChange} placeholder="Judul Catatan" value={this.state.title} />
-                    <div data-placeholder="Masukkan isi catatan di sini" contentEditable onChange={this.onBodyChange}>{parser(this.state.body)}</div>
+                    <div value={this.state.body} data-placeholder="Masukkan isi catatan di sini" contentEditable suppressContentEditableWarning={true} onInput={this.onBodyChange}>{parser(this.props.body || '')}</div>
                 </div>
                 <button className="bg-accent-base w-full rounded-lg mt-4 p-3 " onClick={this.onSubmit}>Simpan</button>
             </>
