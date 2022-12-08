@@ -6,6 +6,7 @@ class NoteForm extends Component {
     constructor(props) {
         super(props)
 
+
         this.state = {
             title: this.props.title || '',
             body: this.props.body || ''
@@ -37,7 +38,7 @@ class NoteForm extends Component {
 
     onSubmit(event) {
         event.preventDefault()
-        this.props.addNote(this.state)
+        this.props.saveNote(this.state)
     }
 
     render() {
@@ -45,7 +46,7 @@ class NoteForm extends Component {
             <>
                 <div className="bg-base-2  text-left mx-auto rounded-lg py-8 mt-4 px-5">
                     <input className="block bg-transparent text-3xl mb-4 w-full" onChange={this.onTitleChange} placeholder="Judul Catatan" value={this.state.title} />
-                    <div value={this.state.body} data-placeholder="Masukkan isi catatan di sini" contentEditable suppressContentEditableWarning={true} onInput={this.onBodyChange}>{parser(this.props.body || '')}</div>
+                    <div value={this.state.body} data-placeholder={(this.props.body) ? "" :"Masukkan isi catatan di sini"} contentEditable suppressContentEditableWarning={true} onInput={this.onBodyChange}>{parser(this.props.body || '')}</div>
                 </div>
                 <button className="bg-accent-base w-full rounded-lg mt-4 p-3 " onClick={this.onSubmit}>Simpan</button>
             </>
