@@ -6,7 +6,6 @@ import { getAllNotes } from '../utils/local-data'
 
 function NoteList() {
   let notes = getAllNotes().filter(note => !note.archived)
-  console.log(notes)
     return (
       <>
 
