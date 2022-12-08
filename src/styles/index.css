@@ -13,10 +13,15 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+svg {
+  display: inline;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: none;
 }
 
 html {
@@ -75,4 +80,14 @@ h6 {
 
 p {
   font-size:  1em;
+}
+
+[data-placeholder]::before {
+  display: inline-block;
+  content: attr(data-placeholder);
+  @apply text-slate-500;
+}
+
+[data-placeholder]:focus::before {
+  display: none;
 }

@@ -18,6 +18,8 @@ module.exports = {
       white: colors.white,
       slate: colors.slate,
       black: colors.black,
+      blue: colors.blue,
+      purple: colors.purple,
       transparent: 'transparent'
     },
     extend: {},
