@@ -3,7 +3,7 @@ import NoteAdd from "./pages/NoteAdd";
 import NoteArchive from "./pages/NoteArchive";
 import { Routes, Route } from 'react-router-dom'
 import Header from "./components/Header";
-import Sidebar from "./components/Sidebar";
+// import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
